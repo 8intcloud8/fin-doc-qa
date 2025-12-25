@@ -111,10 +111,10 @@ Tables contain structured financial data with:
 
 ```mermaid
 flowchart LR
-    A[ConvFinQA Dataset] --> B[Data Preparation<br/>(Dialogue grouping & turn ordering)]
-    B --> C[Document Context Builder<br/>(Text + HTML Table)]
-    C --> D[Conversation Memory<br/>(Explicit message history)]
-    D --> E[LLM Invocation (GPT-4o)<br/>(Chat Completions API)]
+    A[ConvFinQA Dataset] --> B[Data Preparation<br/>Dialogue grouping & turn ordering]
+    B --> C[Document Context Builder<br/>Text + HTML Table]
+    C --> D[Conversation Memory<br/>Explicit message history]
+    D --> E[LLM Invocation GPT-4o<br/>Chat Completions API]
     E --> F[Result Parsing]
     F --> G[Numerical Validation]
     G --> H[Results Logging]
