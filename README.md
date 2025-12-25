@@ -244,16 +244,17 @@ Dialogue Single_MRO/2007/page_134.pdf-1 Results:
   Errors: 0
   Accuracy: 100.00%
 
+
 ================================================================================
 FINAL RESULTS
 ================================================================================
 OpenAI Model: gpt-4o
 Memory Type: Custom ConversationMemory Class
-Total Dialogues: 20
-Total Questions: 70
-Total Correct: 63
+Total Dialogues: 100
+Total Questions: 349
+Total Correct: 269
 Total Errors: 0
-Overall Accuracy: 90.00%
+Overall Accuracy: 77.08%
 ```
 
 ---
@@ -302,15 +303,6 @@ llmconvfinqa/
 
 ### Conversational Memory
 
-The `ConversationMemory` class maintains dialogue state:
-```python
-memory = ConversationMemory()
-memory.set_system_prompt("You are a financial analyst...")
-memory.add_user_message("What was the price in 2007?")
-memory.add_assistant_message("60.94")
-# Next question has full context
-```
-
 **Key Features:**
 - Stores complete message history
 - Includes system prompt with document context
@@ -347,11 +339,6 @@ Install with:
 pip install openai python-dotenv
 ```
 
----
-
-## License
-
-MIT License - see LICENSE file for details
 
 ---
 
@@ -364,20 +351,6 @@ Contributions welcome! Please:
 
 ---
 
-## Citation
-
-If you use this system, please cite the ConvFinQA dataset:
-```bibtex
-@inproceedings{chen2022convfinqa,
-  title={ConvFinQA: Exploring the Chain of Numerical Reasoning in Conversational Finance Question Answering},
-  author={Chen, Zhiyu and Li, Shiyang and Smiley, Charese and Ma, Zhiqiang and Shah, Sameena and Wang, William Yang},
-  booktitle={EMNLP},
-  year={2022}
-}
-```
-
----
-
 ## Support
 
 For issues or questions:
@@ -386,5 +359,3 @@ For issues or questions:
 - Review the code comments
 
 ---
-
-**Built with ❤️ for financial document analysis**
