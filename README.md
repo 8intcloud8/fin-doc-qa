@@ -25,7 +25,7 @@
 
 ## Overview
 
-This system processes financial documents containing tables and text to answer complex questions through multi-turn dialogues. Unlike traditional QA systems, it maintains conversational context—enabling follow-up questions that reference previous answers.
+This system processes financial documents containing tables and text to answer complex questions through multi-turn dialogues. It maintains conversational context—enabling follow-up questions that reference previous answers.
 
 **Example Conversation:**
 ```
@@ -39,11 +39,11 @@ Q4: "What's the percentage change?"      → 142.4% (multi-step reasoning)
 
 ## Features
 
-### Core Capabilities
+### Core Components
 
 | Feature | Description |
 |---------|-------------|
-| **📊 Financial Document Processing** | Parses HTML tables with surrounding contextual text |
+| **📊 Data Extraction** | Parses tables with surrounding contextual text |
 | **🧠 Conversational Memory** | Maintains complete dialogue history across turns |
 | **🔢 Mathematical Reasoning** | Performs calculations, comparisons, and percentage changes |
 | **✅ Answer Validation** | Tolerance-based matching (relative: 0.1%, absolute: 0.0001) |
@@ -62,8 +62,7 @@ Q4: "What's the percentage change?"      → 142.4% (multi-step reasoning)
 ### Installation
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd llmconvfinqa
+git clone https://github.com/8intcloud8/fin-doc-qa.git
 
 # Install dependencies
 pip install -r requirements.txt
@@ -338,24 +337,3 @@ Install with:
 ```bash
 pip install openai python-dotenv
 ```
-
-
----
-
-## Contributing
-
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
----
-
-## Support
-
-For issues or questions:
-- Open an issue on GitHub
-- Check existing documentation
-- Review the code comments
-
----
