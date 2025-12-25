@@ -1,0 +1,12 @@
+# Core dependencies
+python-dotenv
+openai
+
+# Data processing
+pandas
+numpy
+
+# Additional utilities
+requests
+tqdm
+
