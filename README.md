@@ -110,13 +110,14 @@ Tables contain structured financial data with:
 ## 🏗️ **System Architecture**
 
 ```mermaid
-graph TD
-    A[📄 Financial Document] --> B[🔍 Financial Table Parser]
-    B --> C[💭 Conversation Memory]
-    C --> D[🤖 GPT-5.2 Pro]
-    D --> E[📊 JSON Response Parser]
-    E --> F[✅ Answer Validator]
-    F --> G[📈 Results Logger]
+flowchart LR
+    A[ConvFinQA Dataset] --> B[Data Preparation<br/>(Dialogue grouping & turn ordering)]
+    B --> C[Document Context Builder<br/>(Text + HTML Table)]
+    C --> D[Conversation Memory<br/>(Explicit message history)]
+    D --> E[LLM Invocation (GPT-4o)<br/>(Chat Completions API)]
+    E --> F[Result Parsing]
+    F --> G[Numerical Validation]
+    G --> H[Results Logging]
 ```
 
 ### 🧩 **Core Components**
@@ -125,7 +126,7 @@ graph TD
 |-----------|----------|------------|
 | **🧠 ConversationMemory** | Maintains dialogue context | Custom Python Class |
 | **🔍 Document Parser** | Extracts tables + text | Financial Table Processing |
-| **🤖 LLM Engine** | Financial reasoning | OpenAI GPT-5.2 Pro |
+| **🤖 LLM Engine** | Financial reasoning | OpenAI GPT-4o |
 | **✅ Validator** | Answer verification | Tolerance-based matching |
 | **📊 Logger** | Results tracking | File + Console output |
 
@@ -178,13 +179,19 @@ python src/main.py
 
 ```
 fin-doc-qa/
-├── 📄 README.md              # This presentation
-├── 🔧 requirements.txt       # Dependencies
-├── 🔐 .env                   # API keys (create this)
-├── 📊 results.txt            # Output log (generated)
-├── 📂 src/
-│   └── 🐍 main.py            # Main system
-└── 📂 data/
+├── 📄 README.md              # Project documentation
+├── 📋 CHANGELOG.md           # Version history
+├── 🔧 setup.py               # Package configuration
+├── 🔧 requirements.txt       # Python dependencies
+├── 🔐 .env.example           # Environment template
+├── � .gitigenore            # Git ignore rules
+├── 📊 results.txt            # Sample output results
+├── � src/
+│   ├── � lmain.py            # Main implementation
+│   └── � system_prompt.txt  # External prompt configuration
+├── 📂 scripts/
+│   └── � setup.swh           # Setup script
+└── � data/y
     └── 📋 dev_turn.json      # ConvFinQA dataset
 ```
 
@@ -194,7 +201,7 @@ fin-doc-qa/
 
 ### ⚙️ **System Settings**
 ```python
-MODEL_NAME = "gpt-5.2-pro"           # LLM model
+MODEL_NAME = "gpt-4o"                # LLM model
 MAX_DIALOGUES = None                 # Process all dialogues  
 SLEEP_BETWEEN_CALLS = 1.0            # API rate limiting
 RESULTS_FILE = "results.txt"         # Output file
@@ -256,4 +263,3 @@ Number of turns: 5
 
 🏆 Dialogue Results: ✅ 5/5 (100% accuracy)
 ```
-

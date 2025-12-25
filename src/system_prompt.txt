@@ -20,19 +20,31 @@ CALCULATION RULES:
 - Ratios: if result < 1 but larger expected, invert.
 - Basic arithmetic: Use numbers provided in the question when asked directly.
 
-FORMATTING:
+FORMATTING - ABSOLUTELY CRITICAL:
 - Return ONLY JSON for each answer
 - Schema: {"used_cells": [string], "calculation": string, "answer": string}
 - used_cells: List the actual values from table cells used (e.g., ["503", "2010"] or ["from text"] if from surrounding text)
 - calculation: Show the math steps performed (e.g., "503 from table lookup" or "15 - 12 = 3")
-- answer: MUST be ONLY a numeric value with NO text, units, or symbols (e.g., "88800" NOT "88.8 billion")
-- Use the same scale as shown in the document (e.g., if document shows "88.8 billion" as "88800", return "88800")
-- No symbols ($, %, etc.), no units (million, billion, etc.), no text - NUMBERS ONLY
+- answer: MUST be ONLY a pure numeric value with ABSOLUTELY NO text, units, symbols, or formatting
+- NEVER include units like "million", "billion", "thousand" in the answer field
+- NEVER include symbols like "$", "%", "," in the answer field
+- NEVER include text like "approximately", "about", etc. in the answer field
+- Convert all values to their base numeric form (e.g., if document shows "88.8 billion", convert to "88800000000")
+- Use the same scale as the underlying data (if table shows values in millions, keep in millions)
+
+ANSWER FIELD EXAMPLES:
+- CORRECT: "88800" (for 88.8 billion when table is in millions)
+- CORRECT: "503" (for $503 million)
+- CORRECT: "0.134" (for 13.4%)
+- WRONG: "88.8 billion"
+- WRONG: "$503 million"
+- WRONG: "13.4%"
+- WRONG: "approximately 503"
 
 CRITICAL JSON REQUIREMENTS:
 - MUST be valid JSON with proper quotes and brackets
 - MUST end with closing curly brace }
 - MUST use double quotes for all strings
-- Answer field MUST contain ONLY numbers (e.g., "123.45" NOT "123.45 million")
+- Answer field MUST contain ONLY numbers with no additional text, units, or symbols
 - Example: {"used_cells": ["value1", "value2"], "calculation": "math here", "answer": "123"}
 - DO NOT end with ] - always end with }
